@@ -6,25 +6,24 @@ void main() async {
 }
 
 Future<void> fetchRandomUsers() async {
-  print('=== Fetching Data for 10 Random Users ===\n'); // Topic message
+  print('=== Fetching Data for 10 Random Users ===\n');
 
-  const url =
-      'https://random-data-api.com/api/users/random_user?size=10'; // Fetches 10 random users
+// Fetches 10 random users
+  const url = 'https://random-data-api.com/api/users/random_user?size=10';
 
   try {
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      // Decode JSON response
       final List<dynamic> users = json.decode(response.body);
 
-      int counter = 1; // Initialize a counter for numbering
+      int counter = 1;
 
-      // Loop through users and print numbered output with uid, first_name, and last_name
       for (var user in users) {
         print(
-            '$counter. ${user['id']}: ${user['first_name']} ${user['last_name']}');
-        counter++; // Increment the counter for each user
+            '$counter. ${user['uid']}: ${user['first_name']} ${user['last_name']}');
+
+        counter++;
       }
     } else {
       print('Failed to load data: ${response.statusCode}');
