@@ -8,7 +8,7 @@ void main() async {
 Future<void> fetchRandomUsers() async {
   print('=== Fetching Data for 10 Random Users ===\n');
 
-// Fetches 10 random users
+  // Fetches 10 random users
   const url = 'https://random-data-api.com/api/users/random_user?size=10';
 
   try {
@@ -21,8 +21,7 @@ Future<void> fetchRandomUsers() async {
 
       for (var user in users) {
         print(
-            '$counter. ${user['uid']}: ${user['first_name']} ${user['last_name']}');
-
+            "User $counter's uid: ${user['uid']}, first name: ${user['first_name']}, last name: ${user['last_name']}");
         counter++;
       }
     } else {
